@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".RestListActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".RestInfoActivity"></activity>
     </application>
 
 </manifest>

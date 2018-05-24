@@ -9,20 +9,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="먹고싶은 메뉴 선택"
-        android:textColor="#FFB6C1"/>
+        android:textColor="#DB7093"
+        android:textSize="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        />
 
     <LinearLayout
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mainfood3"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mainfood2"/>
 
     </LinearLayout>
     <LinearLayout
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mainfood1"/>
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/mainds" />
 
     </LinearLayout>
 

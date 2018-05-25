@@ -12,7 +12,7 @@
         android:textColor="#DB7093"
         android:textSize="40dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         />
 
     <LinearLayout
@@ -22,15 +22,43 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <ImageButton
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mainfood3"
-            />
-        <ImageButton
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/food1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:onClick="onFood1Clicked"
+
+                android:src="@drawable/mainfood3" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="식사류"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mainfood2"/>
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/food2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:onClick="onFood2Clicked"
+                android:src="@drawable/mainfood2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="카페/음료"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
 
     </LinearLayout>
     <LinearLayout
@@ -39,15 +67,40 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <ImageButton
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mainfood1"/>
-
-        <ImageButton
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:src="@drawable/mainds" />
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/food3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:onClick="onFood3Clicked"
+                android:src="@drawable/mainfood1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="디저트"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mainds"
+                android:background="@android:color/transparent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="덕성여대 인증"
+                android:layout_gravity="center"/>
+        </LinearLayout>
 
     </LinearLayout>
 

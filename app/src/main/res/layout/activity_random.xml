@@ -10,21 +10,62 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="식사류"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
         android:textSize="30sp"/>
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:layout_marginRight="40dp"
             android:text="어디까지"
             />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="학교정문" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.19 사거리" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="솔밭공원" />
+        </LinearLayout>
 
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가자"
+            android:layout_marginLeft="40dp"
+            />
     </LinearLayout>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="#FFB6C1"/>
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘 점심은 oo 이닷!"
+        android:textSize="30sp"
+        />
+
 
 
 </LinearLayout>

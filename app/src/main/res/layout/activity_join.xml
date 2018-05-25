@@ -13,7 +13,6 @@
         android:textSize="20dp"/>
     <View
         android:layout_gravity="center"
-        android:id="@+id/divider4"
         android:layout_marginTop="10dp"
         android:layout_width="350dp"
         android:layout_height="2dp"
@@ -30,12 +29,62 @@
             android:layout_height="wrap_content"
             android:hint="/@duksung.ac.kr"
             android:layout_marginLeft="10dp"
-
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="메일보내기"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="덕성여자대학교 포털 메일만 입력 가능 합니다."
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="17dp"
+        />
+    <View
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="350dp"
+        android:layout_height="2dp"
+        android:background="#DB7093" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        >
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="인증번호 입력"
+            android:layout_marginLeft="10dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="인증"/>
+    </LinearLayout>
+    <View
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="350dp"
+        android:layout_height="2dp"
+        android:background="#DB7093" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 

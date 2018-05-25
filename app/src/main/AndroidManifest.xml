@@ -19,7 +19,8 @@
         <activity android:name=".RestListActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RestInfoActivity" />
-        <activity android:name=".JoinActivity"></activity>
+        <activity android:name=".JoinActivity" />
+        <activity android:name=".RandomActivity"></activity>
     </application>
 
 </manifest>

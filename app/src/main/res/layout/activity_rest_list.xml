@@ -8,13 +8,15 @@
     <Button
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="뽑으러가기!"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:onClick="onRancomClicked"
         android:padding="5dp"
-        android:textSize="18dp"
-        />
+        android:text="뽑으러가기!"
+
+        android:textSize="18dp" />
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="음식점 목록"

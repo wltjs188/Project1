@@ -89,12 +89,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <ImageButton
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:background="@android:color/transparent"
+                android:onClick="onJoinClicked"
                 android:scaleType="centerCrop"
-                android:src="@drawable/mainds"
-                android:background="@android:color/transparent"/>
+                android:src="@drawable/mainds" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -33,11 +33,11 @@ public class RestListView extends LinearLayout {
         imageView = (ImageView) findViewById(R.id.imgview);
     }
 
-    public void setImageView(int resId) {
-        imageView.setImageResource(resId);
+    public void setImageView(int resid) {
+        imageView.setImageResource(resid);
     }
     public void setRestName(String name) { restName.setText(name); }
     public void setRestGenre(String genre) {
-        restGenre.setText(String.valueOf(genre));
+        restGenre.setText(genre);
     }
 }

@@ -47,6 +47,7 @@ public class JoinActivity extends AppCompatActivity {
                 });
     }
 
+
     public void join(View view) {
         createUser(join_id.getText().toString(),join_pw.getText().toString());
     }

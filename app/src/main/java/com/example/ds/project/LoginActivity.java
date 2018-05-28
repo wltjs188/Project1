@@ -1,5 +1,6 @@
 package com.example.ds.project;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,7 +37,10 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent();
+                            setResult(RESULT_OK,intent);
+                            finish();
+
                         } else {
                             // If sign in fails, display a message to the user.]
                             Toast.makeText(getApplicationContext(),"로그인 실패",Toast.LENGTH_LONG).show();

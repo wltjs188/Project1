@@ -51,15 +51,17 @@ public class RestListActivity extends AppCompatActivity {
             restAdapter.addItem(new RestItem("달달", "빵/마카롱", R.drawable.mainds));
             restListView.setAdapter(restAdapter);
         }
-        restListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        restListView.setOnClickListener(new AdapterView.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onClick(View v) {
                 intent3 = new Intent(getApplicationContext(), RestInfoActivity.class);
-                if (str.equals("식사류")) {
+                if(str.equals("식사류")) {
                     intent3.putExtra("restName", "사리원");
-                } else if (str.equals("카페/음료")) {
+                }
+                else if(str.equals("카페/음료")) {
                     intent3.putExtra("restName", "블랙다운");
-                } else if (str.equals("디저트")) {
+                }
+                else if(str.equals("디저트")) {
                     intent3.putExtra("restName", "달달");
                 } // 이부분도 추후 데이터베이스 연동하면 수정, 지금은 RestInfoActivity확인을 위함
                 startActivity(intent3);

@@ -33,7 +33,7 @@ public class RestInfoActivity extends AppCompatActivity {
 
         intent = getIntent();
         String name, genre;
-        name = intent.getStringExtra("restname");
+        name = intent.getStringExtra("restName");
 
         if(name.equals("사리원")) {
             genre = "국밥";

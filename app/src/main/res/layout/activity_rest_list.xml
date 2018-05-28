@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/goRandom"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -16,7 +17,6 @@
 
         android:textSize="18dp" />
     <TextView
-        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="음식점 목록"
@@ -31,7 +31,7 @@
 
 
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/restListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>

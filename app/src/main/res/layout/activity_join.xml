@@ -25,12 +25,15 @@
         android:layout_marginTop="20dp"
         >
         <EditText
+            android:id="@+id/join_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="/@duksung.ac.kr"
             android:layout_marginLeft="10dp"
             />
         <Button
+            android:id="@+id/btn_email"
+            android:onClick="sendMail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="메일보내기"/>

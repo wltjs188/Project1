@@ -1,10 +1,12 @@
 package com.example.ds.project;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,8 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class JoinActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    EditText join_id;
-    EditText join_pw;
+    EditText join_id,join_pw,join_email;
+    int num;
 
 
     @Override
@@ -26,6 +28,19 @@ public class JoinActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         join_id=(EditText)findViewById(R.id.join_id);
         join_pw=(EditText)findViewById(R.id.join_pw);
+        join_email=(EditText)findViewById(R.id.join_email);
+
+    }
+    private void sendEmail(String address){
+        String [] arr=address.split("@");
+        if(arr[1].equals("duksung.ac.kr")) {
+
+        }
+
+        else{
+            Toast.makeText(getApplicationContext(),"메일형식이 다릅니다.",Toast.LENGTH_LONG).show();
+        }
+
     }
 
     private void createUser(String email,String password){
@@ -50,5 +65,9 @@ public class JoinActivity extends AppCompatActivity {
 
     public void join(View view) {
         createUser(join_id.getText().toString(),join_pw.getText().toString());
+    }
+
+    public void sendMail(View view) {
+        sendEmail(join_email.getText().toString());
     }
 }

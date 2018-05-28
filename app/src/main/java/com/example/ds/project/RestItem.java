@@ -26,7 +26,6 @@ public class RestItem {
     public void setRestGenre(String restGenre) {
         this.restGenre = restGenre;
     }
-
     public int getResid() {
         return resid;
     }

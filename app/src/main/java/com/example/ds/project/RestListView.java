@@ -28,16 +28,20 @@ public class RestListView extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.rest_item, this, true);
 
-        restName = (TextView) findViewById(R.id.restName);
-        restGenre = (TextView)findViewById(R.id.restGenre);
+        restName = (TextView) findViewById(R.id.textRestName);
+        restGenre = (TextView)findViewById(R.id.textRestGenre);
         imageView = (ImageView) findViewById(R.id.imgview);
     }
 
-    public void setImageView(int resid) {
-        imageView.setImageResource(resid);
+    public void setImageView(int resId) {
+        imageView.setImageResource(resId);
     }
-    public void setRestName(String name) { restName.setText(name); }
+
+    public void setRestName(String name) {
+        restName.setText(name);
+    }
+
     public void setRestGenre(String genre) {
-        restGenre.setText(genre);
+        restGenre.setText(String.valueOf(genre));
     }
 }

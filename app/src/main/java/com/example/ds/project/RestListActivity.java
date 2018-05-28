@@ -37,16 +37,19 @@ public class RestListActivity extends AppCompatActivity {
         restAdapter = new RestAdapter();
 
         if(str.equals("식사류")) {
-            restAdapter.addItem(new RestItem("사리원", "국밥", R.drawable.mainds));
+            restAdapter.addItem(new RestItem("사리원", "국밥", R.drawable.mainds)); // 추후 데이터베이스 연동하면 수정
+            restListView.setAdapter(restAdapter);
 
         }
         else if(str.equals("카페/음료")) {
             restAdapter.addItem(new RestItem("블랙다운", "커피/음료", R.drawable.mainds));
-        }
+            restListView.setAdapter(restAdapter);
+       }
         else if(str.equals("디저트")) {
             restAdapter.addItem(new RestItem("달달", "빵/마카롱", R.drawable.mainds));
+            restListView.setAdapter(restAdapter);
         }
-        restListView.setAdapter(restAdapter);
+
     }
 
     public void onRancomClicked(View view) {
@@ -69,6 +72,7 @@ public class RestListActivity extends AppCompatActivity {
         public long getItemId(int position) {
             return position;
         }
+
         public void addItem(RestItem item) {
             items.add(item);
         }
@@ -83,4 +87,5 @@ public class RestListActivity extends AppCompatActivity {
             return view;
         }
     }
+
 }

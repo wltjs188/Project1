@@ -4,6 +4,7 @@ public class ReviewItem {
     String username;
     String reviewContent;
 
+    public ReviewItem(){}
     public String getUsername() {
         return username;
     }

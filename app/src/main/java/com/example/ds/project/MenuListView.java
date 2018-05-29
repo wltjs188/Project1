@@ -30,7 +30,6 @@ public class MenuListView extends LinearLayout {
         menuPrice = (TextView)findViewById(R.id.menuPrice);
     }
 
-
     public void setMenuName(String name) {
         menuName.setText(name);
     }

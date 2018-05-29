@@ -3,6 +3,7 @@ package com.example.ds.project;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -18,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RestListActivity extends AppCompatActivity {
     TextView title;
@@ -58,19 +60,10 @@ public class RestListActivity extends AppCompatActivity {
             }
         });
 
-
-
         restListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent3 = new Intent(getApplicationContext(), RestInfoActivity.class);
-                if (str.equals("식사류")) {
-                    intent3.putExtra("restName", "사리원");
-                } else if (str.equals("카페/음료")) {
-                    intent3.putExtra("restName", "블랙다운");
-                } else if (str.equals("디저트")) {
-                    intent3.putExtra("restName", "달달");
-                } // 이부분도 추후 데이터베이스 연동하면 수정, 지금은 RestInfoActivity확인을 위함
                 startActivityForResult(intent3, 18);
             }
         });

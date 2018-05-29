@@ -23,9 +23,8 @@ public class RandomActivity extends AppCompatActivity {
     Intent intent1;
     String str;
     FirebaseDatabase database;
-    DatabaseReference mDatabase;
     Rest rest;
-    List<Rest> rests; //받아온데이터리스트
+    List<Rest> rests=new ArrayList<>(); //받아온데이터리스트
 
 
     @Override
@@ -33,23 +32,20 @@ public class RandomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_random);
         database=FirebaseDatabase.getInstance();
-        mDatabase=database.getReference();
         title = (TextView)findViewById(R.id.title);
         random=(Button)findViewById(R.id.random);
-        rests= new ArrayList<Rest>();
-        rest=new Rest();
         restName=(TextView)findViewById(R.id.restName);
         intent1 = getIntent();
         str=intent1.getStringExtra("genre");
         title.setText(str);
 
-        mDatabase.child("rest").addValueEventListener(new ValueEventListener() {
+        database.getReference().child("rest").addValueEventListener(new ValueEventListener() {
+            @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    rest = snapshot.getValue(Rest.class);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    rest=snapshot.getValue(Rest.class);
                     rests.add(rest);
                 }
-                Log.d("안쪽",rests.get(1).name);
 
             }
             @Override
@@ -61,8 +57,7 @@ public class RandomActivity extends AppCompatActivity {
         random.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                restName.setText("오늘 점심은이닷!");
+                restName.setText("오늘 점심"+rests.get(1).name+"은이닷!");
             }
         });
 

@@ -75,9 +75,9 @@ public class RestInfoActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 reviewAdapter.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    reviewItem = snapshot.getValue(ReviewItem.class);
-                    reviewAdapter.addItem(reviewItem);
-                    reviewListView.setAdapter(reviewAdapter);
+                     reviewItem = snapshot.getValue(ReviewItem.class);
+                     reviewAdapter.addItem(reviewItem);
+                     reviewListView.setAdapter(reviewAdapter);
                 }
             }
 
@@ -118,6 +118,8 @@ public class RestInfoActivity extends AppCompatActivity {
        // else {
            // Toast.makeText(getApplicationContext(),"로그인을 하셔야 리뷰를 등록 할 수 있습니다.", Toast.LENGTH_LONG).show();
        // }
+
+        reviewEt.setText("");
     }
 
     class MenuAdapter extends BaseAdapter {

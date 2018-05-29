@@ -31,6 +31,7 @@ public class RestListActivity extends AppCompatActivity {
     ListView restListView;
     RestAdapter restAdapter;
     FirebaseDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +65,12 @@ public class RestListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent3 = new Intent(getApplicationContext(), RestInfoActivity.class);
+                String name=restAdapter.getName(position);
+                String genre=restAdapter.getGenre(position);
+                int menuId=restAdapter.getMenuId(position);
+                intent3.putExtra("name",name);
+                intent3.putExtra("genre",genre);
+                intent3.putExtra("menuId",menuId);
                 startActivityForResult(intent3, 18);
             }
         });
@@ -86,6 +93,16 @@ public class RestListActivity extends AppCompatActivity {
         public Object getItem(int position) {
             return items.get(position);
         }
+        public String getName(int position){
+            return items.get(position).getName();
+        }
+        public String getGenre(int position){
+            return items.get(position).getGenre();
+        }
+        public int getMenuId(int position){
+            return items.get(position).getMenuId();
+        }
+
 
         @Override
         public long getItemId(int position) {
@@ -98,7 +115,6 @@ public class RestListActivity extends AppCompatActivity {
         @Override // 제일 중요
         public View getView(int position, View correntView, ViewGroup parent) {
             RestListView view = new RestListView(getApplicationContext());
-
             RestItem item = items.get(position);
             view.setRestName(item.name);
             view.setRestGenre(item.genre);

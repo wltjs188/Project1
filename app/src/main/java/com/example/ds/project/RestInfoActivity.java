@@ -30,22 +30,9 @@ public class RestInfoActivity extends AppCompatActivity {
         reviewLayout = (LinearLayout) findViewById(R.id.reviewLayout); 
 
         intent = getIntent();
-        String name, genre;
-        name = intent.getStringExtra("restName");
+        restName.setText(intent.getStringExtra("name"));
+        restGenre.setText(intent.getStringExtra("genre"));
 
-        if(name.equals("사리원")) {
-            genre = "국밥";
-            restName.setText(name);
-            restGenre.setText(genre);
-        } else if(name.equals("블랙다운")) {
-            genre = "커피/음료";
-            restName.setText(name);
-            restGenre.setText(genre);
-        } else if(name.equals("달달")) {
-            genre = "빵/마카롱";
-            restName.setText(name);
-            restGenre.setText(genre);
-        } //이부분도 데베 연동 후 수정 예정
         
         //메뉴 리스트 구현
         menuListView = (ListView)findViewById(R.id.menuList);

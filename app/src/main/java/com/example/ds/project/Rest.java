@@ -1,6 +1,8 @@
 package com.example.ds.project;
 
-public class Rest {
+import java.io.Serializable;
+
+public class Rest{
     public String genre;
     public String location;
     public int menuId;

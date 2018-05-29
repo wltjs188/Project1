@@ -46,7 +46,6 @@ public class RandomActivity extends AppCompatActivity {
                     rest=snapshot.getValue(Rest.class);
                     rests.add(rest);
                 }
-
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

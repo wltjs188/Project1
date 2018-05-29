@@ -10,20 +10,25 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 public class RestListActivity extends AppCompatActivity {
-
     TextView title;
     String str;
     Intent intent1;
     Intent intent2;
     Intent intent3;
-
+    RestItem restItem;
     ListView restListView;
     RestAdapter restAdapter;
+    FirebaseDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,24 +38,28 @@ public class RestListActivity extends AppCompatActivity {
         str=intent1.getStringExtra("genre");
         title.setText(str);
         intent2 = new Intent(getApplicationContext(),RandomActivity.class);
-
         restListView = (ListView)findViewById(R.id.restListView);
-
         restAdapter = new RestAdapter();
+        database=FirebaseDatabase.getInstance();
+        database.getReference().child("rest").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    restItem=snapshot.getValue(RestItem.class);
+                    if(str.equals(restItem.getGenre())) {
+                        restAdapter.addItem(restItem);
+                        restListView.setAdapter(restAdapter);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-        if(str.equals("식사류")) {
-            restAdapter.addItem(new RestItem("사리원", "국밥", R.drawable.mainds)); // 추후 데이터베이스 연동하면 수정
-            restListView.setAdapter(restAdapter);
+            }
+        });
 
-        }
-        else if(str.equals("카페/음료")) {
-            restAdapter.addItem(new RestItem("블랙다운", "커피/음료", R.drawable.mainds));
-            restListView.setAdapter(restAdapter);
-       }
-        else if(str.equals("디저트")) {
-            restAdapter.addItem(new RestItem("달달", "빵/마카롱", R.drawable.mainds));
-            restListView.setAdapter(restAdapter);
-        }
+
+
         restListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -65,7 +74,6 @@ public class RestListActivity extends AppCompatActivity {
                 startActivityForResult(intent3, 18);
             }
         });
-
 
     }
 
@@ -98,9 +106,9 @@ public class RestListActivity extends AppCompatActivity {
             RestListView view = new RestListView(getApplicationContext());
 
             RestItem item = items.get(position);
-            view.setRestName(item.getRestName());
-            view.setRestGenre(item.getRestGenre());
-            view.setImageView(item.getResid());
+            view.setRestName(item.name);
+            view.setRestGenre(item.genre);
+//            view.setImageView(item.getResid());
             return view;
         }
     }

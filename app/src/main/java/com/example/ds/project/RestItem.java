@@ -1,36 +1,31 @@
 package com.example.ds.project;
 
 public class RestItem {
-    String restName;
-    String restGenre;
-    int resid;
+    public String genre;
+    public String location;
+    public int menuId;
+    public String name;
 
-    public RestItem(String restName, String restGenre, int resid) {
-        this.restName = restName;
-        this.restGenre = restGenre;
-        this.resid = resid;
+    public RestItem(){}
+    public RestItem(String genre,String location,int menuId,String name){
+        this.genre=genre;
+        this.location=location;
+        this.menuId=menuId;
+        this.name=name;
     }
-
-    public String getRestName() {
-        return restName;
+    public String getGenre() {
+        return genre;
     }
-
-    public void setRestName(String restName) {
-        this.restName = restName;
+    public String getLocation() {
+        return location;
     }
-
-    public String getRestGenre() {
-        return restGenre;
+    public int getMenuId() {
+        return menuId;
     }
-
-    public void setRestGenre(String restGenre) {
-        this.restGenre = restGenre;
-    }
-    public int getResid() {
-        return resid;
+    public String getName() {
+        return name;
     }
 
-    public void setResid(int resid) {
-        this.resid = resid;
-    }
+
+
 }

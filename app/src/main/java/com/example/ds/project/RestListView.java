@@ -27,10 +27,10 @@ public class RestListView extends LinearLayout {
         //food_item.xml을 대상으로 인플레이션하는 코드 작성
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.rest_item, this, true);
-
         restName = (TextView) findViewById(R.id.textRestName);
         restGenre = (TextView)findViewById(R.id.textRestGenre);
         imageView = (ImageView) findViewById(R.id.imgview);
+
     }
 
     public void setImageView(int resId) {

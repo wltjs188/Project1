@@ -64,13 +64,12 @@ public class RestListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent3 = new Intent(getApplicationContext(), RestInfoActivity.class);
-                if (str.equals("식사류")) {
-                    intent3.putExtra("restName", "사리원");
-                } else if (str.equals("카페/음료")) {
-                    intent3.putExtra("restName", "블랙다운");
-                } else if (str.equals("디저트")) {
-                    intent3.putExtra("restName", "달달");
-                } // 이부분도 추후 데이터베이스 연동하면 수정, 지금은 RestInfoActivity확인을 위함
+                String name=restAdapter.getName(position);
+                String genre=restAdapter.getGenre(position);
+                int menuId=restAdapter.getMenuId(position);
+                intent3.putExtra("name",name);
+                intent3.putExtra("genre",genre);
+                intent3.putExtra("menuId",menuId);
                 startActivityForResult(intent3, 18);
             }
         });
@@ -94,6 +93,15 @@ public class RestListActivity extends AppCompatActivity {
             return items.get(position);
         }
 
+        public String getName(int position){
+            return items.get(position).getName();
+        }
+        public String getGenre(int position){
+            return items.get(position).getGenre();
+        }
+        public int getMenuId(int position){
+            return items.get(position).getMenuId();
+        }
         @Override
         public long getItemId(int position) {
             return position;

@@ -17,4 +17,7 @@ public class Rest {
     public String getName() {
         return name;
     }
+    public String getLocation(){
+        return location;
+    }
 }

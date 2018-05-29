@@ -33,14 +33,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <CheckBox
+                android:id="@+id/cbSchool"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="학교정문" />
             <CheckBox
+                android:id="@+id/cb419"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4.19 사거리" />
             <CheckBox
+                android:id="@+id/cbPark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="솔밭공원" />

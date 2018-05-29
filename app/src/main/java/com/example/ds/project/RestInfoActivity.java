@@ -23,10 +23,8 @@ public class RestInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rest_info);
-
         restName = (TextView)findViewById(R.id.restName);
         restGenre = (TextView)findViewById(R.id.restGenre);
-        
         menuLayout = (LinearLayout)findViewById(R.id.menuLayout);
         locationLayout = (LinearLayout)findViewById(R.id.locationLayout);
         reviewLayout = (LinearLayout) findViewById(R.id.reviewLayout); 

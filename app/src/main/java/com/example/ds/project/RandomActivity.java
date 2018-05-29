@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,12 +20,14 @@ import java.util.List;
 
 public class RandomActivity extends AppCompatActivity {
     TextView title,restName;
+    CheckBox cbSchool,cb419,cbPark;
     Button random;
     Intent intent1;
     String str;
     FirebaseDatabase database;
     Rest rest;
     List<Rest> rests=new ArrayList<>(); //받아온데이터리스트
+    List<Integer> num = new ArrayList<>();
 
 
     @Override
@@ -38,13 +41,18 @@ public class RandomActivity extends AppCompatActivity {
         intent1 = getIntent();
         str=intent1.getStringExtra("genre");
         title.setText(str);
+        cbSchool=(CheckBox)findViewById(R.id.cbSchool);
+        cb419=(CheckBox)findViewById(R.id.cb419);
+        cbPark=(CheckBox)findViewById(R.id.cbPark);
 
         database.getReference().child("rest").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     rest=snapshot.getValue(Rest.class);
-                    rests.add(rest);
+                    if(str.equals(rest.genre)) {
+                        rests.add(rest);
+                    }
                 }
             }
             @Override
@@ -52,14 +60,34 @@ public class RandomActivity extends AppCompatActivity {
 
             }
         });
-
         random.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View view) {
-                restName.setText("오늘 점심"+rests.get(1).name+"은이닷!");
+                if(cbSchool.isChecked()==true) {
+                    for(int i=0;i<rests.size();i++){
+                        if((rests.get(i).getLocation()).equals("학교정문")){
+                            num.add(i);
+                        }
+                    }
+                }
+                if(cb419.isChecked()==true) {
+                    for(int i=0;i<rests.size();i++){
+                        if((rests.get(i).getLocation()).equals("419거리")){
+                            num.add(i);
+                        }
+                    }
+                }
+                if(cbPark.isChecked()==true) {
+                    for (int i = 0; i < rests.size(); i++) {
+                        if ((rests.get(i).getLocation()).equals("솔밭공원")) {
+                            num.add(i);
+                        }
+                    }
+                }
+                double randomValue = Math.random();
+                int ran = (int)(randomValue * num.size()) -1;
+                int index = num.get(ran);
+                restName.setText("오늘 점심은 "+rests.get(index).name+" 이닷!");
             }
         });
-
     }
-
 }

@@ -81,6 +81,7 @@ public class RestListActivity extends AppCompatActivity {
         intent2.putExtra("genre",str);
         startActivity(intent2);
     }
+
     class RestAdapter extends BaseAdapter {
         ArrayList<RestItem> items = new ArrayList<RestItem>();
         @Override

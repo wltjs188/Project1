@@ -70,8 +70,10 @@ public class RestInfoActivity extends AppCompatActivity {
         reviewListView = (ListView)findViewById(R.id.listReview) ;
         reviewAdapter = new ReviewAdapter();
         databaseReference.child("review").addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                reviewAdapter.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     reviewItem = snapshot.getValue(ReviewItem.class);
                     reviewAdapter.addItem(reviewItem);
@@ -151,6 +153,9 @@ public class RestInfoActivity extends AppCompatActivity {
     }
     class ReviewAdapter extends BaseAdapter {
         ArrayList<ReviewItem> items = new ArrayList<ReviewItem>();
+        public void clear(){
+            items.clear();
+        }
         @Override
         public int getCount() {
             return items.size();

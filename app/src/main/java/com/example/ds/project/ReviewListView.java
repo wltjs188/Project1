@@ -4,19 +4,19 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MenuListView extends LinearLayout {
-    TextView menuName;
-    TextView menuPrice;
-    public MenuListView(Context context) {
+public class ReviewListView extends LinearLayout {
+
+    TextView userName;
+    TextView reviewContent;
+    public ReviewListView(Context context) {
         super(context);
         init(context);
     }
 
-    public MenuListView(Context context, @Nullable AttributeSet attrs) {
+    public ReviewListView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
@@ -24,19 +24,18 @@ public class MenuListView extends LinearLayout {
     public void init(Context context) {
         //food_item.xml을 대상으로 인플레이션하는 코드 작성
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.menu_item, this, true);
+        inflater.inflate(R.layout.review_item, this, true);
 
-        menuName = (TextView)findViewById(R.id.menuName);
-        menuPrice = (TextView)findViewById(R.id.menuPrice);
+        userName = (TextView)findViewById(R.id.userName);
+        reviewContent = (TextView)findViewById(R.id.reviewContent);
     }
 
 
-    public void setMenuName(String name) {
-        menuName.setText(name);
+    public void setUserName(String name) {
+        userName.setText(name);
     }
 
-    public void setMenuPrice(String genre) {
-        menuPrice.setText(String.valueOf(genre));
+    public void setReviewContent(String genre) {
+        reviewContent.setText(String.valueOf(genre));
     }
-
 }

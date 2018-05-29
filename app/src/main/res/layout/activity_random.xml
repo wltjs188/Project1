@@ -47,12 +47,14 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/random"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="가자"
             android:layout_marginLeft="40dp"
-            android:onClick="random"
+
             />
+
     </LinearLayout>
     <ImageView
         android:layout_marginTop="10dp"

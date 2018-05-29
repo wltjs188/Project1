@@ -104,5 +104,4 @@ public class RestListActivity extends AppCompatActivity {
             return view;
         }
     }
-
 }

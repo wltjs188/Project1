@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,10 +19,6 @@ public class RestInfoActivity extends AppCompatActivity {
     Intent intent;
     ListView menuListView;
     MenuAdapter menuAdapter;
-
-    EditText reviewEt;
-
-    String userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +32,6 @@ public class RestInfoActivity extends AppCompatActivity {
         intent = getIntent();
         String name, genre;
         name = intent.getStringExtra("restName");
-        userid = intent.getStringExtra("userid");
 
         if(name.equals("사리원")) {
             genre = "국밥";
@@ -67,10 +60,7 @@ public class RestInfoActivity extends AppCompatActivity {
         //지도 구현
 
         //리뷰 구현
-        reviewEt = (EditText)findViewById(R.id.reviewInput);
-
-
-
+        
     }
 
     public void onMenuBtnClicked(View view) {
@@ -89,17 +79,6 @@ public class RestInfoActivity extends AppCompatActivity {
         menuLayout.setVisibility(View.INVISIBLE);
         locationLayout.setVisibility(View.INVISIBLE);
         reviewLayout.setVisibility(View.VISIBLE);
-    }
-
-    public void onReviewUpdateBtnClicked(View view) {
-        if(userid != null) {
-            String rv = reviewEt.getText().toString();
-
-
-        }
-        else {
-            Toast.makeText(getApplicationContext(),"로그인을 하셔야 리뷰를 등록 할 수 있습니다.", Toast.LENGTH_LONG).show();
-        }
     }
 
     class MenuAdapter extends BaseAdapter {

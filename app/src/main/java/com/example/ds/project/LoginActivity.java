@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private void loginUser(String email,String password){
+    private void loginUser(final String email, String password){
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -38,8 +38,9 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent();
+                            intent.putExtra("userid", email);
                             setResult(RESULT_OK,intent);
-                            finish();
+                            startActivity(intent);
 
                         } else {
                             // If sign in fails, display a message to the user.]

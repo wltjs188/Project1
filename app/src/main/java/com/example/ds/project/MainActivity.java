@@ -14,7 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
-    Intent intent1,intent2,intent3;
+    Intent intent1,intent2,intent3, userIntent;
+    String userid;
     FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         user = FirebaseAuth.getInstance().getCurrentUser();
 
+        userIntent = getIntent();
+        userid = userIntent.getStringExtra("userid");
+        intent1.putExtra("userid", userid);
 
     }
 

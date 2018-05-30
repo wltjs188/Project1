@@ -22,16 +22,18 @@
                 android:id="@+id/restName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:textSize="30dp"
                 android:text="음식점 이름"
+
                 />
+
             <TextView
                 android:id="@+id/restGenre"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:layout_marginTop="10dp"
-                android:text="음식점 장르(ex 양식, 일식, 한식.. )"/>
+                android:text="음식점 장르(ex 양식, 일식, 한식.. )" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

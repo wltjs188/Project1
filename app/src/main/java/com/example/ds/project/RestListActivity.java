@@ -44,6 +44,7 @@ public class RestListActivity extends AppCompatActivity {
         database.getReference().child("rest").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                restAdapter.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     restItem=snapshot.getValue(RestItem.class);
                     if(str.equals(restItem.getGenre())) {
@@ -83,6 +84,9 @@ public class RestListActivity extends AppCompatActivity {
 
     class RestAdapter extends BaseAdapter {
         ArrayList<RestItem> items = new ArrayList<RestItem>();
+        public void clear(){
+            items.clear();
+        }
         @Override
         public int getCount() {
             return items.size();

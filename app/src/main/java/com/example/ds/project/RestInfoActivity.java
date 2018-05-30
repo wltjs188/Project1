@@ -32,6 +32,7 @@ public class RestInfoActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     EditText reviewEt;
     ReviewItem reviewItem;
+    MenuItem menu;
 
     String userid;
     @Override
@@ -48,7 +49,9 @@ public class RestInfoActivity extends AppCompatActivity {
 
         intent = getIntent();
         String name, genre;
+        final int menuId;
         name = intent.getStringExtra("restName");
+        menuId=intent.getIntExtra("menuId",1);
         userid = "유저";//intent.getStringExtra("userid");
         restName.setText(intent.getStringExtra("name"));
         restGenre.setText(intent.getStringExtra("genre"));
@@ -56,13 +59,24 @@ public class RestInfoActivity extends AppCompatActivity {
         //메뉴 리스트 구현
         menuListView = (ListView)findViewById(R.id.menuList);
         menuAdapter = new MenuAdapter();
+        databaseReference.child("menu").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                menuAdapter.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    menu=snapshot.getValue(MenuItem.class);
+                    if(menuId==menu.menuId){
+                        menuAdapter.addItem(menu);
+                        menuListView.setAdapter(menuAdapter);
+                    }
 
-        menuAdapter.addItem(new MenuItem("메뉴1", "6000원"));
-        menuAdapter.addItem(new MenuItem("메뉴2", "7000원"));
-        menuAdapter.addItem(new MenuItem("메뉴3", "5000원"));
-        
-        menuListView.setAdapter(menuAdapter);
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
         //지도 구현
 
         //리뷰 구현
@@ -86,6 +100,7 @@ public class RestInfoActivity extends AppCompatActivity {
 
             }
         });
+
 
 
     }
@@ -129,6 +144,9 @@ public class RestInfoActivity extends AppCompatActivity {
 
     class MenuAdapter extends BaseAdapter {
         ArrayList<MenuItem> items = new ArrayList<MenuItem>();
+        public void clear(){
+            items.clear();
+        }
         @Override
         public int getCount() {
             return items.size();
@@ -151,7 +169,6 @@ public class RestInfoActivity extends AppCompatActivity {
         @Override // 제일 중요
         public View getView(int position, View correntView, ViewGroup parent) {
             MenuListView view = new MenuListView(getApplicationContext());
-
             MenuItem item = items.get(position);
             view.setMenuName(item.getMenuName());
             view.setMenuPrice(item.getMenuPrice());

@@ -3,10 +3,14 @@ package com.example.ds.project;
 public class MenuItem {
     String menuName;
     String menuPrice;
+    int menuId;
 
-    public MenuItem(String menuName, String menuPrice) {
+    public MenuItem(){}
+
+    public MenuItem(String menuName, String menuPrice,int menuId) {
         this.menuName = menuName;
         this.menuPrice = menuPrice;
+        this.menuId=menuId;
     }
 
     public String getMenuName() {

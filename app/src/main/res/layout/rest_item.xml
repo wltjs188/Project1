@@ -11,16 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/textRestName"
-            android:textSize="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="70dp"
+            android:textSize="30dp"
+            android:padding="13dp"
+            />
+
         <TextView
             android:id="@+id/textRestGenre"
-            android:textSize="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="0dp"
+            />
 
     </LinearLayout>
 </LinearLayout>

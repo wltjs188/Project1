@@ -116,7 +116,6 @@ public class RestListActivity extends AppCompatActivity {
 
             RestItem item = items.get(position);
             view.setRestName(item.name);
-            view.setRestGenre(item.genre);
 //            view.setImageView(item.getResid());
             return view;
         }

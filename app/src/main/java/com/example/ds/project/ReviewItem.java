@@ -3,6 +3,7 @@ package com.example.ds.project;
 public class ReviewItem {
     String username;
     String reviewContent;
+    int menuId;
 
     public ReviewItem(){}
     public String getUsername() {

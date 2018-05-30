@@ -3,6 +3,7 @@ package com.example.ds.project;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -33,6 +34,7 @@ public class RestInfoActivity extends AppCompatActivity {
     EditText reviewEt;
     ReviewItem reviewItem;
     MenuItem menu;
+    int menuId;
 
     String userid;
     @Override
@@ -49,7 +51,7 @@ public class RestInfoActivity extends AppCompatActivity {
 
         intent = getIntent();
         String name, genre;
-        final int menuId;
+
         name = intent.getStringExtra("restName");
         menuId=intent.getIntExtra("menuId",1);
         userid = "유저";//intent.getStringExtra("userid");
@@ -84,25 +86,21 @@ public class RestInfoActivity extends AppCompatActivity {
         reviewListView = (ListView)findViewById(R.id.listReview) ;
         reviewAdapter = new ReviewAdapter();
         databaseReference.child("review").addValueEventListener(new ValueEventListener() {
-
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 reviewAdapter.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                      reviewItem = snapshot.getValue(ReviewItem.class);
-                     reviewAdapter.addItem(reviewItem);
-                     reviewListView.setAdapter(reviewAdapter);
+                     if(menuId==reviewItem.menuId) {
+                         reviewAdapter.addItem(reviewItem);
+                         reviewListView.setAdapter(reviewAdapter);
+                     }
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
-
-
-
     }
 
     public void onMenuBtnClicked(View view) {
@@ -130,8 +128,7 @@ public class RestInfoActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "내용을 입력해주세요", Toast.LENGTH_LONG).show();
             }
             else {
-                Review review = new Review(userid, rv);
-
+                Review review = new Review(userid, rv,menuId);
                 databaseReference.child("review").push().setValue(review);
             }
        // }
@@ -202,7 +199,6 @@ public class RestInfoActivity extends AppCompatActivity {
         @Override // 제일 중요
         public View getView(int position, View correntView, ViewGroup parent) {
             ReviewListView view = new ReviewListView(getApplicationContext());
-
             ReviewItem item = items.get(position);
             view.setUserName(item.getUsername());
             view.setReviewContent(item.getReviewContent());

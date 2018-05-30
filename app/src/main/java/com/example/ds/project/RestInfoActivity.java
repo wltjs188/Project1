@@ -111,9 +111,14 @@ public class RestInfoActivity extends AppCompatActivity {
     public void onReviewUpdateBtnClicked(View view) {
         //if(userid != null) {
             String rv = reviewEt.getText().toString();
-            Review review = new Review(userid, rv);
+            if(rv=="" || rv==null) {
+                Toast.makeText(getApplicationContext(), "내용을 입력해주세요", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Review review = new Review(userid, rv);
 
-            databaseReference.child("review").push().setValue(review);
+                databaseReference.child("review").push().setValue(review);
+            }
        // }
        // else {
            // Toast.makeText(getApplicationContext(),"로그인을 하셔야 리뷰를 등록 할 수 있습니다.", Toast.LENGTH_LONG).show();

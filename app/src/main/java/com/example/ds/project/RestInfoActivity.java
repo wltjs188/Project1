@@ -58,13 +58,10 @@ public class RestInfoActivity extends AppCompatActivity {
             id = userid.getEmail();
             realid = id.split("@");
         }
-
-
         name = intent.getStringExtra("restName");
         menuId=intent.getIntExtra("menuId",1);
         restName.setText(intent.getStringExtra("name"));
         restGenre.setText(intent.getStringExtra("genre"));
-        
         //메뉴 리스트 구현
         menuListView = (ListView)findViewById(R.id.menuList);
         menuAdapter = new MenuAdapter();

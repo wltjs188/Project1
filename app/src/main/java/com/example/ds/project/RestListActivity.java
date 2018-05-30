@@ -120,7 +120,8 @@ public class RestListActivity extends AppCompatActivity {
 
             RestItem item = items.get(position);
             view.setRestName(item.name);
-//            view.setImageView(item.getResid());
+//          view.setImageView(item.getResid());
+
             return view;
         }
     }

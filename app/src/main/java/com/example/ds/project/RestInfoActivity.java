@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,8 +37,10 @@ public class RestInfoActivity extends AppCompatActivity {
     ReviewItem reviewItem;
     MenuItem menu;
     int menuId;
+    FirebaseUser userid = FirebaseAuth.getInstance().getCurrentUser();
+    String id;
+    String realid[];
 
-    String userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +52,16 @@ public class RestInfoActivity extends AppCompatActivity {
         reviewLayout = (LinearLayout) findViewById(R.id.reviewLayout);
         database=FirebaseDatabase.getInstance();
         databaseReference = database.getReference();
-
         intent = getIntent();
         String name, genre;
+        if(userid !=null) {
+            id = userid.getEmail();
+            realid = id.split("@");
+        }
+
 
         name = intent.getStringExtra("restName");
         menuId=intent.getIntExtra("menuId",1);
-        userid = "유저";//intent.getStringExtra("userid");
         restName.setText(intent.getStringExtra("name"));
         restGenre.setText(intent.getStringExtra("genre"));
         
@@ -120,19 +127,19 @@ public class RestInfoActivity extends AppCompatActivity {
     }
 
     public void onReviewUpdateBtnClicked(View view) {
-        //if(userid != null) {
+        if(userid != null) {
             String rv = reviewEt.getText().toString();
             if(rv=="" || rv==null) {
                 Toast.makeText(getApplicationContext(), "내용을 입력해주세요", Toast.LENGTH_LONG).show();
             }
             else {
-                Review review = new Review(userid, rv,menuId);
+                Review review = new Review(realid[0], rv,menuId);
                 databaseReference.child("review").push().setValue(review);
             }
-       // }
-       // else {
-           // Toast.makeText(getApplicationContext(),"로그인을 하셔야 리뷰를 등록 할 수 있습니다.", Toast.LENGTH_LONG).show();
-       // }
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"로그인 하십시오.", Toast.LENGTH_LONG).show();
+        }
 
         reviewEt.setText("");
     }

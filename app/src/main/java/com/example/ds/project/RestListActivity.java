@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -110,18 +111,18 @@ public class RestListActivity extends AppCompatActivity {
         public long getItemId(int position) {
             return position;
         }
-
+        public String getImageUrl(int positon){
+            return items.get(positon).imageUrl;
+        }
         public void addItem(RestItem item) {
             items.add(item);
         }
         @Override // 제일 중요
         public View getView(int position, View correntView, ViewGroup parent) {
             RestListView view = new RestListView(getApplicationContext());
-
             RestItem item = items.get(position);
             view.setRestName(item.name);
-//          view.setImageView(item.getResid());
-
+            view.setImageView(restAdapter.getImageUrl(position));
             return view;
         }
     }

@@ -5,14 +5,17 @@ public class RestItem {
     public String location;
     public int menuId;
     public String name;
+    public String imageUrl;
 
     public RestItem(){}
-    public RestItem(String genre,String location,int menuId,String name){
+    public RestItem(String genre,String location,int menuId,String name,String imageUrl){
         this.genre=genre;
         this.location=location;
         this.menuId=menuId;
         this.name=name;
+        this.imageUrl=imageUrl;
     }
+
     public String getGenre() {
         return genre;
     }

@@ -4,9 +4,12 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 public class RestListView extends LinearLayout {
     ImageView imageView;
@@ -33,12 +36,12 @@ public class RestListView extends LinearLayout {
 
     }
 
-    public void setImageView(int resId) {
-        imageView.setImageResource(resId);
-    }
 
     public void setRestName(String name) {
         restName.setText(name);
+    }
+    public void setImageView(String url){
+        Glide.with(getContext()).load(url).into(imageView);
     }
 
     public void setRestGenre(String genre) {

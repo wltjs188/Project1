@@ -23,7 +23,6 @@ public class ReviewItem {
     }
 
     public ReviewItem(String username, String reviewContent) {
-
         this.username = username;
         this.reviewContent = reviewContent;
     }

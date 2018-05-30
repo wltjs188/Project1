@@ -71,10 +71,8 @@ public class RestInfoActivity extends AppCompatActivity {
                         menuAdapter.addItem(menu);
                         menuListView.setAdapter(menuAdapter);
                     }
-
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class RestListActivity extends AppCompatActivity {
     TextView title;
-    String str;
+    String str,url;
     Intent intent1;
     Intent intent2;
     Intent intent3;
@@ -69,7 +69,7 @@ public class RestListActivity extends AppCompatActivity {
                 String name=restAdapter.getName(position);
                 String genre=restAdapter.getGenre(position);
                 int menuId=restAdapter.getMenuId(position);
-                String url=restAdapter.getImageUrl(position);
+                url=restAdapter.getImageUrl(position);
                 intent3.putExtra("name",name);
                 intent3.putExtra("genre",genre);
                 intent3.putExtra("menuId",menuId);

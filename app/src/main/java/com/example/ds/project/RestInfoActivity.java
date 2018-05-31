@@ -1,6 +1,7 @@
 package com.example.ds.project;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.MenuAdapter;
@@ -8,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +29,7 @@ import java.util.ArrayList;
 
 public class RestInfoActivity extends AppCompatActivity {
     TextView restName, restGenre;
+    ImageView imageView;
     LinearLayout menuLayout, locationLayout, reviewLayout;
     Intent intent;
     ListView menuListView, reviewListView;
@@ -47,6 +51,7 @@ public class RestInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rest_info);
         restName = (TextView)findViewById(R.id.restName);
         restGenre = (TextView)findViewById(R.id.restGenre);
+        imageView=(ImageView)findViewById(R.id.restImg);
         menuLayout = (LinearLayout)findViewById(R.id.menuLayout);
         locationLayout = (LinearLayout)findViewById(R.id.locationLayout);
         reviewLayout = (LinearLayout) findViewById(R.id.reviewLayout);
@@ -58,6 +63,7 @@ public class RestInfoActivity extends AppCompatActivity {
             id = userid.getEmail();
             realid = id.split("@");
         }
+        Glide.with(getApplicationContext()).load(intent.getStringExtra("url")).into(imageView);
         name = intent.getStringExtra("restName");
         menuId=intent.getIntExtra("menuId",1);
         restName.setText(intent.getStringExtra("name"));

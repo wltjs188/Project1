@@ -69,9 +69,11 @@ public class RestListActivity extends AppCompatActivity {
                 String name=restAdapter.getName(position);
                 String genre=restAdapter.getGenre(position);
                 int menuId=restAdapter.getMenuId(position);
+                String url=restAdapter.getImageUrl(position);
                 intent3.putExtra("name",name);
                 intent3.putExtra("genre",genre);
                 intent3.putExtra("menuId",menuId);
+                intent3.putExtra("url",url);
                 startActivityForResult(intent3, 18);
             }
         });

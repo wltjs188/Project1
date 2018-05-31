@@ -44,6 +44,7 @@ public class RestInfoActivity extends AppCompatActivity {
     FirebaseUser userid = FirebaseAuth.getInstance().getCurrentUser();
     String id;
     String realid[];
+    MapViewFragment mapViewFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,7 @@ public class RestInfoActivity extends AppCompatActivity {
             }
         });
         //지도 구현
+        mapViewFragment = (MapViewFragment) getSupportFragmentManager().findFragmentById(R.id.mapView);
 
         //리뷰 구현
         reviewEt = (EditText)findViewById(R.id.reviewInput);

@@ -90,12 +90,13 @@
             android:orientation="vertical"
             android:visibility="invisible">
             <!--지도-->
-            <WebView
+            <fragment
                 android:id="@+id/mapView"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"></WebView>
+                android:layout_marginTop="20dp"
+                android:name="com.example.ds.project.MapViewFragment"></fragment>
             <TextView
                 android:id="@+id/address"
                 android:layout_width="wrap_content"

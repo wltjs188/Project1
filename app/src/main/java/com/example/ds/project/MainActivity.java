@@ -1,6 +1,8 @@
 package com.example.ds.project;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .permitDiskReads()
+                .permitDiskWrites()
+                .permitNetwork().build());
         intent1 = new Intent(getApplicationContext(),RestListActivity.class);
         intent2 = new Intent(getApplicationContext(),JoinActivity.class);
         intent3 = new Intent(getApplicationContext(),LoginActivity.class);
@@ -59,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
     }
-
 
     //로그인눌러질때
     public boolean onOptionsItemSelected(MenuItem item){

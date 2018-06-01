@@ -1,5 +1,6 @@
 package com.example.ds.project;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +36,8 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
     double longitude, latitude;
     String name;
     int id;
+    RestItem rest = new RestItem();
+    RestInfoActivity restInfoActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,9 +45,9 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
         mapView = (NMapView) v.findViewById(R.id.map_view);
         mapView.setClientId("SRQ8fQ4AjnbYFQuTXNDu");
         mapView.setClickable(true);
-        database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference();
-        id = 1;//getArguments().getInt("menuId");
+        //database = FirebaseDatabase.getInstance();
+        //databaseReference = database.getReference();
+        //id = getArguments().getInt("menuId");
 
         return v;
 
@@ -58,12 +61,18 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
         mapController = mapView.getMapController();
         mapViewerResourceProvider = new NMapViewerResourceProvider(getActivity());
         mapOverlayManager = new NMapOverlayManager(getActivity(), mapView, mapViewerResourceProvider);
+        restInfoActivity = (RestInfoActivity) getActivity();
+
+        longitude = restInfoActivity.longitude;
+        latitude = restInfoActivity.latitude;
+        moveMapCenter();
 
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -77,10 +86,9 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
     }
 
     private void moveMapCenter() {
-        databaseReference.child("rest").addValueEventListener(new ValueEventListener() {
+       /* databaseReference.child("rest").addValueEventListener(new ValueEventListener() {
                                                                   @Override
                                                                   public void onDataChange(DataSnapshot dataSnapshot) {
-                                                                      RestItem rest;
                                                                       for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                                                           rest = snapshot.getValue(RestItem.class);
                                                                           if (id == rest.menuId) {
@@ -95,7 +103,7 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
                                                                   public void onCancelled(DatabaseError databaseError) {
 
                                                                   }
-                                                              });
+                                                              });*/
 
         NGeoPoint currentPoint = new NGeoPoint(longitude, latitude);
         mapController.setMapCenter(currentPoint);

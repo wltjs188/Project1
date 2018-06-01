@@ -1,5 +1,6 @@
 package com.example.ds.project;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -47,6 +48,7 @@ public class RestInfoActivity extends AppCompatActivity {
     String id;
     String realid[];
     MapViewFragment mapViewFragment;
+    double longitude, latitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,8 @@ public class RestInfoActivity extends AppCompatActivity {
         }
         Glide.with(getApplicationContext()).load(intent.getStringExtra("url")).into(imageView);
         menuId=intent.getIntExtra("menuId",1);
+        longitude = intent.getDoubleExtra("longitude", 1);
+        latitude = intent.getDoubleExtra("latitude", 1);
         restName.setText(intent.getStringExtra("name"));
         restGenre.setText(intent.getStringExtra("genre"));
         //메뉴 리스트 구현
@@ -90,9 +94,9 @@ public class RestInfoActivity extends AppCompatActivity {
         });
         //지도 구현
         mapViewFragment = (MapViewFragment) getSupportFragmentManager().findFragmentById(R.id.mapView);
-        Bundle bundle = new Bundle(1);
-        bundle.putInt("menuId", menuId);
-        mapViewFragment.setArguments(bundle);
+        //Bundle bundle = new Bundle(1);
+        //bundle.putInt("menuId", menuId);
+        //mapViewFragment.setArguments(bundle);
 
         //리뷰 구현
         reviewEt = (EditText)findViewById(R.id.reviewInput);
@@ -217,5 +221,13 @@ public class RestInfoActivity extends AppCompatActivity {
             view.setReviewContent(item.getReviewContent());
             return view;
         }
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
     }
 }

@@ -30,6 +30,7 @@ public class RestListActivity extends AppCompatActivity {
     ListView restListView;
     RestAdapter restAdapter;
     FirebaseDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,10 +71,16 @@ public class RestListActivity extends AppCompatActivity {
                 String genre=restAdapter.getGenre(position);
                 int menuId=restAdapter.getMenuId(position);
                 url=restAdapter.getImageUrl(position);
+                double longitude, latitude;
+                longitude = restAdapter.getLongitute(position);
+                latitude = restAdapter.getLatitude(position);
                 intent3.putExtra("name",name);
                 intent3.putExtra("genre",genre);
                 intent3.putExtra("menuId",menuId);
                 intent3.putExtra("url",url);
+                intent3.putExtra("longitude", longitude);
+                intent3.putExtra("latitude", latitude);
+
                 startActivityForResult(intent3, 18);
             }
         });
@@ -113,8 +120,14 @@ public class RestListActivity extends AppCompatActivity {
         public long getItemId(int position) {
             return position;
         }
-        public String getImageUrl(int positon){
-            return items.get(positon).imageUrl;
+        public String getImageUrl(int position){
+            return items.get(position).imageUrl;
+        }
+        public double getLatitude(int position) {
+            return items.get(position).getLatitude();
+        }
+        public double getLongitute(int position) {
+            return items.get(position).getLongitude();
         }
         public void addItem(RestItem item) {
             items.add(item);

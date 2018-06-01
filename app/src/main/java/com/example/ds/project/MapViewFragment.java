@@ -22,6 +22,8 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
     NMapController mapController;
     NMapViewerResourceProvider mapViewerResourceProvider;
     NMapOverlayManager mapOverlayManager;
+    NMapPOIdata poidata;
+    int markerId = NMapPOIflagType.PIN;
 
 
     @Override
@@ -43,6 +45,7 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
         mapViewerResourceProvider = new NMapViewerResourceProvider(getActivity());
         mapOverlayManager = new NMapOverlayManager(getActivity(), mapView, mapViewerResourceProvider);
         moveMapCenter();
+
     }
 
     @Override
@@ -61,17 +64,15 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
     }
 
     private void moveMapCenter() {
-       /* NGeoPoint currentPoint = new NGeoPoint(lng, lat);
+        NGeoPoint currentPoint = new NGeoPoint(127.0630205, 37.5091300);
         mapController.setMapCenter(currentPoint);
 
-        NMapPOIdata poiData = new NMapPOIdata(2, mapViewerResourceProvider);
-        poiData.addPOIitem(lng, lat, "현재 위치", NMapPOIflagType.FROM, 0);
-        poiData.addPOIitem(lng2, lat2, "도착 위치", NMapPOIflagType.TO, 0);
-        poiData.endPOIdata();
+        poidata = new NMapPOIdata(1, mapViewerResourceProvider);
+        poidata.beginPOIdata(1);
+        poidata.addPOIitem(127.0630205, 37.5091300, "Pizza 777-111", markerId, 0);
+        poidata.endPOIdata();
 
-        NMapPOIdataOverlay poiDataOverlay = mapOverlayManager.createPOIdataOverlay(poiData, null);
-        poiDataOverlay.showAllPOIdata(0);
-        poiDataOverlay.setOnStateChangeListener(this);*/
+        NMapPOIdataOverlay poiDataOverlay = mapOverlayManager.createPOIdataOverlay(poidata, null);
         
     }
 

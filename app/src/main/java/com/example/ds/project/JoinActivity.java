@@ -17,7 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class JoinActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    EditText join_id,join_pw,join_email;
+    EditText join_id,join_pw,join_email,edit_num;
+    Button check_btn,join_btn;
     int num;
     String [] arr;
 
@@ -29,6 +30,10 @@ public class JoinActivity extends AppCompatActivity {
         join_id=(EditText)findViewById(R.id.join_id);
         join_pw=(EditText)findViewById(R.id.join_pw);
         join_email=(EditText)findViewById(R.id.join_email);
+        join_btn=(Button)findViewById(R.id.join_btn);
+        check_btn=(Button)findViewById(R.id.check_btn);
+        edit_num=(EditText)findViewById(R.id.edit_num);
+
 
     }
 
@@ -65,15 +70,27 @@ public class JoinActivity extends AppCompatActivity {
                         "덕성여자대학교 학생 인증 메일입니다.",
                         "인증번호:" + num,
                         "projectd1888@gmail.com",
-                        arr[0] + "@duksung.ac.kr"
+                        arr[0] +"@duksung.ac.kr"
                 );
-                Toast.makeText(getApplicationContext(), "성공성공", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "메일을 보냈습니다.", Toast.LENGTH_LONG).show();
+                check_btn.setEnabled(true);
             } catch (Exception e) {
                 Log.e("SendMail", e.getMessage(), e);
             }
         }
         else{
             Toast.makeText(getApplicationContext(),"메일형식이 다릅니다.",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void check(View view) {
+        String inputNum=edit_num.getText().toString();
+        if(inputNum.equals(num+"")){
+            Toast.makeText(getApplicationContext(),"인증 성공했습니다.",Toast.LENGTH_LONG).show();
+            join_btn.setEnabled(true);
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"인증 실패했습니다.",Toast.LENGTH_LONG).show();
         }
     }
 }

@@ -61,16 +61,21 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         >
+
         <EditText
+            android:id="@+id/edit_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="인증번호 입력"
             android:layout_marginLeft="10dp"
-            />
+            android:hint="인증번호 입력" />
+
         <Button
+            android:id="@+id/check_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="인증"/>
+            android:text="인증"
+            android:enabled="false"
+            android:onClick="check"/>
     </LinearLayout>
     <View
         android:layout_gravity="center"
@@ -98,11 +103,14 @@
             android:layout_height="wrap_content"
             android:hint="비밀번호 입력(6자이상)"
             android:inputType="textPassword" />
+
         <Button
+            android:id="@+id/join_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="가입하기"
-            android:onClick="join"/>
+            android:enabled="false"
+            android:onClick="join"
+            android:text="가입하기" />
 
     </LinearLayout>
 

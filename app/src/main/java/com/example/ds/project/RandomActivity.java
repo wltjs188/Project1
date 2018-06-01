@@ -25,12 +25,14 @@ public class RandomActivity extends AppCompatActivity {
     CheckBox cbSchool,cb419,cbPark;
     ImageView imageView;
     Button random;
-    Intent intent1;
+    Intent intent1,intent2;
     String str;
     FirebaseDatabase database;
     Rest rest;
+    int index;
     List<Rest> rests=new ArrayList<>(); //받아온데이터리스트
     List<Integer> num = new ArrayList<>();
+
 
 
     @Override
@@ -42,12 +44,18 @@ public class RandomActivity extends AppCompatActivity {
         random=(Button)findViewById(R.id.random);
         restName=(TextView)findViewById(R.id.restName);
         intent1 = getIntent();
+        intent2=new Intent(getApplicationContext(),RestInfoActivity.class);
         str=intent1.getStringExtra("genre");
         title.setText(str);
         cbSchool=(CheckBox)findViewById(R.id.cbSchool);
         cb419=(CheckBox)findViewById(R.id.cb419);
         cbPark=(CheckBox)findViewById(R.id.cbPark);
         imageView=(ImageView)findViewById(R.id.ranImg);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
 
         database.getReference().child("rest").addValueEventListener(new ValueEventListener() {
             @Override
@@ -89,10 +97,21 @@ public class RandomActivity extends AppCompatActivity {
                 }
                 double randomValue = Math.random();
                 int ran = (int)(randomValue * num.size()) -1;
-                int index = num.get(ran);
+                index = num.get(ran);
                 Glide.with(getApplicationContext()).load(rests.get(index).imageUrl).into(imageView);
                 restName.setText("오늘 점심은 "+rests.get(index).name+" 이닷!");
             }
         });
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                intent2.putExtra("url",rests.get(index).imageUrl);
+                intent2.putExtra("menuId",rests.get(index).menuId);
+                intent2.putExtra("name",rests.get(index).name);
+                intent2.putExtra("genre",rests.get(index).genre);
+                startActivity(intent2);
+            }
+        });
     }
+
 }

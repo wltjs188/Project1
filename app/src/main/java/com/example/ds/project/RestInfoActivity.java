@@ -59,13 +59,11 @@ public class RestInfoActivity extends AppCompatActivity {
         database=FirebaseDatabase.getInstance();
         databaseReference = database.getReference();
         intent = getIntent();
-        String name, genre;
         if(userid !=null) {
             id = userid.getEmail();
             realid = id.split("@");
         }
         Glide.with(getApplicationContext()).load(intent.getStringExtra("url")).into(imageView);
-        name = intent.getStringExtra("restName");
         menuId=intent.getIntExtra("menuId",1);
         restName.setText(intent.getStringExtra("name"));
         restGenre.setText(intent.getStringExtra("genre"));

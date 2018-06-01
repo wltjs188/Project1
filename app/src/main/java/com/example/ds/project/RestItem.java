@@ -6,14 +6,18 @@ public class RestItem {
     public int menuId;
     public String name;
     public String imageUrl;
+    public double latitude;
+    public double longitude;
 
     public RestItem(){}
-    public RestItem(String genre,String location,int menuId,String name,String imageUrl){
+    public RestItem(String genre,String location,int menuId,String name,String imageUrl, double latitude, double longitude){
         this.genre=genre;
         this.location=location;
         this.menuId=menuId;
         this.name=name;
         this.imageUrl=imageUrl;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getGenre() {
@@ -27,6 +31,12 @@ public class RestItem {
     }
     public String getName() {
         return name;
+    }
+    public double getLatitude() {
+        return latitude;
+    }
+    public double getLongitude() {
+        return longitude;
     }
 
 

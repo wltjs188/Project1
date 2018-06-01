@@ -1,11 +1,17 @@
 package com.example.ds.project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.nhn.android.maps.NMapController;
 import com.nhn.android.maps.NMapView;
 import com.nhn.android.maps.maplib.NGeoPoint;
@@ -24,7 +30,11 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
     NMapOverlayManager mapOverlayManager;
     NMapPOIdata poidata;
     int markerId = NMapPOIflagType.PIN;
-
+    FirebaseDatabase database;
+    DatabaseReference databaseReference;
+    double longitude, latitude;
+    String name;
+    int id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +42,10 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
         mapView = (NMapView) v.findViewById(R.id.map_view);
         mapView.setClientId("SRQ8fQ4AjnbYFQuTXNDu");
         mapView.setClickable(true);
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference();
+        id = 1;//getArguments().getInt("menuId");
+
         return v;
 
     }
@@ -44,7 +58,6 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
         mapController = mapView.getMapController();
         mapViewerResourceProvider = new NMapViewerResourceProvider(getActivity());
         mapOverlayManager = new NMapOverlayManager(getActivity(), mapView, mapViewerResourceProvider);
-        moveMapCenter();
 
     }
 
@@ -64,12 +77,32 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
     }
 
     private void moveMapCenter() {
-        NGeoPoint currentPoint = new NGeoPoint(127.0630205, 37.5091300);
+        databaseReference.child("rest").addValueEventListener(new ValueEventListener() {
+                                                                  @Override
+                                                                  public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                      RestItem rest;
+                                                                      for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                                                          rest = snapshot.getValue(RestItem.class);
+                                                                          if (id == rest.menuId) {
+                                                                              longitude = rest.getLongitude();
+                                                                              latitude = rest.getLatitude();
+                                                                              name = rest.getName();
+                                                                          }
+                                                                      }
+                                                                  }
+
+                                                                  @Override
+                                                                  public void onCancelled(DatabaseError databaseError) {
+
+                                                                  }
+                                                              });
+
+        NGeoPoint currentPoint = new NGeoPoint(longitude, latitude);
         mapController.setMapCenter(currentPoint);
 
         poidata = new NMapPOIdata(1, mapViewerResourceProvider);
         poidata.beginPOIdata(1);
-        poidata.addPOIitem(127.0630205, 37.5091300, "Pizza 777-111", markerId, 0);
+        poidata.addPOIitem(longitude, latitude, name, markerId, 0);
         poidata.endPOIdata();
 
         NMapPOIdataOverlay poiDataOverlay = mapOverlayManager.createPOIdataOverlay(poidata, null);

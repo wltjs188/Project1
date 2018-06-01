@@ -1,5 +1,7 @@
 package com.example.ds.project;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
@@ -88,6 +90,9 @@ public class RestInfoActivity extends AppCompatActivity {
         });
         //지도 구현
         mapViewFragment = (MapViewFragment) getSupportFragmentManager().findFragmentById(R.id.mapView);
+        Bundle bundle = new Bundle(1);
+        bundle.putInt("menuId", menuId);
+        mapViewFragment.setArguments(bundle);
 
         //리뷰 구현
         reviewEt = (EditText)findViewById(R.id.reviewInput);

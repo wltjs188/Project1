@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"></com.nhn.android.maps.NMapView>
 
-    <LinearLayout
+    <!--LinearLayout
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:layout_alignParentBottom="true"
@@ -23,7 +23,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/mainds" />
-    </LinearLayout>
+    </LinearLayout-->
 
 
 </RelativeLayout>

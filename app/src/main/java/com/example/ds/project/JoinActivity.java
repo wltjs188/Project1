@@ -31,16 +31,6 @@ public class JoinActivity extends AppCompatActivity {
         join_email=(EditText)findViewById(R.id.join_email);
 
     }
-    private void sendEmail(String address){
-        arr=address.split("@");
-        if(arr[1].equals("duksung.ac.kr")) {
-
-        }
-
-        else{
-            Toast.makeText(getApplicationContext(),"메일형식이 다릅니다.",Toast.LENGTH_LONG).show();
-        }
-    }
 
     private void createUser(String email,String password){
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -67,17 +57,23 @@ public class JoinActivity extends AppCompatActivity {
 
     public void sendMail(View view) {
         num=(int)(Math.random()*9999);
-        GMailSender sender = new GMailSender("projectd1888@gmail.com","wltjsrla456"); // SUBSTITUTE HERE
-        try {
-            sender.sendMail(
-                    "덕성여자대학교 학생 인증 메일입니다.",
-                    "인증번호:"+num,
-                    "projectd1888@gmail.com",
-                    arr[0]+"@duksung.ac.kr"
-            );
-            Toast.makeText(getApplicationContext(),"성공성공",Toast.LENGTH_LONG).show();
-        } catch (Exception e) {
-            Log.e("SendMail", e.getMessage(), e);
+        arr=join_email.getText().toString().split("@");
+        if(arr[1].equals("duksung.ac.kr")) {
+            GMailSender sender = new GMailSender("projectd1888@gmail.com", "wltjsrla456"); // SUBSTITUTE HERE
+            try {
+                sender.sendMail(
+                        "덕성여자대학교 학생 인증 메일입니다.",
+                        "인증번호:" + num,
+                        "projectd1888@gmail.com",
+                        arr[0] + "@duksung.ac.kr"
+                );
+                Toast.makeText(getApplicationContext(), "성공성공", Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                Log.e("SendMail", e.getMessage(), e);
+            }
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"메일형식이 다릅니다.",Toast.LENGTH_LONG).show();
         }
     }
 }

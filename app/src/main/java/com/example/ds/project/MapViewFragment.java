@@ -58,7 +58,7 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
         super.onStart();
         mapView.setBuiltInZoomControls(true, null);
         mapView.setOnMapStateChangeListener(this);
-        
+        mapView.setScalingFactor(3.0f);
         mapController = mapView.getMapController();
         mapViewerResourceProvider = new NMapViewerResourceProvider(getActivity());
         mapOverlayManager = new NMapOverlayManager(getActivity(), mapView, mapViewerResourceProvider);

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -98,8 +99,11 @@ public class RandomActivity extends AppCompatActivity {
                 double randomValue = Math.random();
                 int ran = (int)(randomValue * num.size()) -1;
                 index = num.get(ran);
-                Glide.with(getApplicationContext()).load(rests.get(index).imageUrl).into(imageView);
-                restName.setText("오늘 점심은 "+rests.get(index).name+" 이닷!");
+                if(rests !=null) {
+                    Glide.with(getApplicationContext()).load(rests.get(index).imageUrl).into(imageView);
+                    restName.setText("오늘 점심은 " + rests.get(index).name + " 이닷!");
+                }
+
             }
         });
 
@@ -109,6 +113,8 @@ public class RandomActivity extends AppCompatActivity {
                 intent2.putExtra("menuId",rests.get(index).menuId);
                 intent2.putExtra("name",rests.get(index).name);
                 intent2.putExtra("genre",rests.get(index).genre);
+                intent2.putExtra("latitude",rests.get(index).latitude);
+                intent2.putExtra("longitude",rests.get(index).longitude);
                 startActivity(intent2);
             }
         });

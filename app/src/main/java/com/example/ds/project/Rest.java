@@ -8,6 +8,9 @@ public class Rest{
     public int menuId;
     public String name;
     public String imageUrl;
+    public Double latitude;
+    public Double longitude;
+
 
     public Rest(){}
     public Rest(String genre,String location,int menuId,String name,String imageUrl){

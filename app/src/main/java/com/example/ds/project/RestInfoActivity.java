@@ -45,7 +45,7 @@ public class RestInfoActivity extends AppCompatActivity {
     MenuItem menu;
     int menuId;
     FirebaseUser userid = FirebaseAuth.getInstance().getCurrentUser();
-    String id;
+    String id, name ;
     String realid[];
     MapViewFragment mapViewFragment;
     double longitude, latitude;
@@ -71,7 +71,8 @@ public class RestInfoActivity extends AppCompatActivity {
         menuId=intent.getIntExtra("menuId",1);
         longitude = intent.getDoubleExtra("longitude", 1);
         latitude = intent.getDoubleExtra("latitude", 1);
-        restName.setText(intent.getStringExtra("name"));
+        name = intent.getStringExtra("name");
+        restName.setText(name);
         restGenre.setText(intent.getStringExtra("genre"));
         //메뉴 리스트 구현
         menuListView = (ListView)findViewById(R.id.menuList);
@@ -223,11 +224,4 @@ public class RestInfoActivity extends AppCompatActivity {
         }
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
 }

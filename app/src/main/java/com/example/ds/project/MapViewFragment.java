@@ -65,6 +65,7 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
 
         longitude = restInfoActivity.longitude;
         latitude = restInfoActivity.latitude;
+        name = restInfoActivity.name;
         moveMapCenter();
 
     }
@@ -86,24 +87,6 @@ public class MapViewFragment extends NMapFragment implements NMapView.OnMapState
     }
 
     private void moveMapCenter() {
-       /* databaseReference.child("rest").addValueEventListener(new ValueEventListener() {
-                                                                  @Override
-                                                                  public void onDataChange(DataSnapshot dataSnapshot) {
-                                                                      for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                                                          rest = snapshot.getValue(RestItem.class);
-                                                                          if (id == rest.menuId) {
-                                                                              longitude = rest.getLongitude();
-                                                                              latitude = rest.getLatitude();
-                                                                              name = rest.getName();
-                                                                          }
-                                                                      }
-                                                                  }
-
-                                                                  @Override
-                                                                  public void onCancelled(DatabaseError databaseError) {
-
-                                                                  }
-                                                              });*/
 
         NGeoPoint currentPoint = new NGeoPoint(longitude, latitude);
         mapController.setMapCenter(currentPoint);

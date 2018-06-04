@@ -74,12 +74,14 @@ public class RestListActivity extends AppCompatActivity {
                 double longitude, latitude;
                 longitude = restAdapter.getLongitute(position);
                 latitude = restAdapter.getLatitude(position);
+                String addr = restAdapter.getAddress(position);
                 intent3.putExtra("name",name);
                 intent3.putExtra("genre",genre);
                 intent3.putExtra("menuId",menuId);
                 intent3.putExtra("url",url);
                 intent3.putExtra("longitude", longitude);
                 intent3.putExtra("latitude", latitude);
+                intent3.putExtra("address", addr);
 
                 startActivityForResult(intent3, 18);
             }
@@ -128,6 +130,9 @@ public class RestListActivity extends AppCompatActivity {
         }
         public double getLongitute(int position) {
             return items.get(position).getLongitude();
+        }
+        public String getAddress(int position) {
+            return items.get(position).getAddress();
         }
         public void addItem(RestItem item) {
             items.add(item);

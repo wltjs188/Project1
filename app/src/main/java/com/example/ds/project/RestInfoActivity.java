@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class RestInfoActivity extends AppCompatActivity {
-    TextView restName, restGenre;
+    TextView restName, restGenre, addressVIew;
     ImageView imageView;
     LinearLayout menuLayout, locationLayout, reviewLayout;
     Intent intent;
@@ -49,6 +49,7 @@ public class RestInfoActivity extends AppCompatActivity {
     String realid[];
     MapViewFragment mapViewFragment;
     double longitude, latitude;
+    String address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,7 @@ public class RestInfoActivity extends AppCompatActivity {
         menuId=intent.getIntExtra("menuId",1);
         longitude = intent.getDoubleExtra("longitude", 1);
         latitude = intent.getDoubleExtra("latitude", 1);
+        address = intent.getStringExtra("address");
         name = intent.getStringExtra("name");
         restName.setText(name);
         restGenre.setText(intent.getStringExtra("genre"));
@@ -95,9 +97,8 @@ public class RestInfoActivity extends AppCompatActivity {
         });
         //지도 구현
         mapViewFragment = (MapViewFragment) getSupportFragmentManager().findFragmentById(R.id.mapView);
-        //Bundle bundle = new Bundle(1);
-        //bundle.putInt("menuId", menuId);
-        //mapViewFragment.setArguments(bundle);
+        addressVIew = (TextView)findViewById(R.id.address);
+        addressVIew.setText(address);
 
         //리뷰 구현
         reviewEt = (EditText)findViewById(R.id.reviewInput);

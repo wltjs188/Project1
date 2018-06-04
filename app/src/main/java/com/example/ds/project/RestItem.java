@@ -8,9 +8,10 @@ public class RestItem {
     public String imageUrl;
     public double latitude;
     public double longitude;
+    public String address;
 
     public RestItem(){}
-    public RestItem(String genre,String location,int menuId,String name,String imageUrl, double latitude, double longitude){
+    public RestItem(String genre,String location,int menuId,String name,String imageUrl, double latitude, double longitude, String address){
         this.genre=genre;
         this.location=location;
         this.menuId=menuId;
@@ -18,6 +19,7 @@ public class RestItem {
         this.imageUrl=imageUrl;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.address = address;
     }
 
     public String getGenre() {
@@ -37,6 +39,9 @@ public class RestItem {
     }
     public double getLongitude() {
         return longitude;
+    }
+    public String getAddress(){
+        return address;
     }
 
 

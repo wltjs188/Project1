@@ -68,9 +68,9 @@ public class JoinActivity extends AppCompatActivity {
             try {
                 sender.sendMail(
                         "덕성여자대학교 학생 인증 메일입니다.",
-                        "인증번호:" + num,
+                        "안녕하세요! 오늘 점심 뭐 먹지? 입니다. 인증번호를 입력하세요!! 인증번호:" + num,
                         "projectd1888@gmail.com",
-                        arr[0] +"@duksung.ac.kr"
+                        arr[0]+"@duksung.ac.kr"
                 );
                 Toast.makeText(getApplicationContext(), "메일을 보냈습니다.", Toast.LENGTH_LONG).show();
                 check_btn.setEnabled(true);
